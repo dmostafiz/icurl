@@ -7,9 +7,10 @@ class Icurl{
     function __construct($url = null)
     {
         $this->ch = curl_init();
-
-        curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($this->ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($this->ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($this->ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($this->ch, CURLOPT_SSL_VERIFYHOST, 0);
     }
 
     function url($url)
@@ -35,7 +36,7 @@ class Icurl{
         } 
         else 
         {
-            die("Please give a array of valid proxies like [ '120.10.1.123:12345', '000.12.20.122:80' ]");
+            die("Please give a array of valid proxies like [ '120.10.1.123:12345' ]");
         }
 
         return $this;
